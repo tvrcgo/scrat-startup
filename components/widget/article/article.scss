@@ -1,0 +1,59 @@
+
+.w-article {
+
+    padding: 15px;
+
+    &-title {
+        font: bold 18px/25px Arial;
+        color: #111;
+        min-height: 18px;
+    }
+
+    &-meta {
+        font: normal 12px/15px Arial;
+        margin: 5px auto;
+        color: #aaa;
+    }
+
+    &-source {
+        margin-right: 10px;
+    }
+
+    &-text {
+        font: normal 15px/25px Arial;
+        color: #111;
+        img, table {
+            max-width: 100%;
+        }
+    }
+
+    &-original {
+        margin: 20px auto 0;
+        font: normal 12px/25px Arial;
+        a {
+            color: #286dea;
+        }
+    }
+
+    &-notfound {
+        padding: 50px 0;
+        text-align: center;
+    }
+}
+
+.img {
+
+    margin: 10px auto;
+    // 大图
+    &-l {
+        width: 100%;
+    }
+    // 中图
+    &-m {
+        width: 85%;
+    }
+    // 图片说明
+    &-title {
+        font: normal 13px/20px Arial;
+    }
+}

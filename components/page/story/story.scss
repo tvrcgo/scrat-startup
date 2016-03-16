@@ -1,7 +1,11 @@
 
 .p-story {
 
-    &-content {
-        padding: 1em;
+    background-color: #f5f5f5;
+    padding: 1px 0;
+
+    &-footer {
+        display: none;
     }
+
 }

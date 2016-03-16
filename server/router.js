@@ -1,23 +1,40 @@
 'use strict';
 
+/**
+ * Router
+ * @author weilai
+ */
+
+var path = require('path');
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser');
-
-router.use(['/story/*'], bodyparser.urlencoded({ extended: false }));
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var walog = require('./lib/walog');
 
 /**
- * story
+ * Mount router
+ * @param  {string} key [router]
  */
-router.use('/story/:id', function(req, res, next){
-	res.locals.title = "this is a story.";
-	res.locals.story = {
-		id: req.params.id,
-		title: 'Story',
-		content: 'story content'
-	};
-	next();
-});
+function mount(key) {
+	var rules = require('./router/'+key);
+	rules.forEach(function(item){
+		var method = item[0].toLowerCase();
+		router[method](item[1], item[2]);
+	})
+}
+
+// middlewares
+router.use(cookieParser());
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(walog.mixin({
+	name: 'ifstory',
+	dir: path.join(__dirname, '../private/log')
+}))
+
+// routers
+mount('collect');
+mount('story');
 
 module.exports = function(opts){
     return router;

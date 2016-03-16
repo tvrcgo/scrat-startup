@@ -1,2 +1,2 @@
 # scrat-startup
-Scrat 脚手架.
+Scrat 快速开始.

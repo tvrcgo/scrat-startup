@@ -3,6 +3,7 @@
     {% head %}
         <link rel="dns-prefetch" href="">
         <meta charset="utf-8"/>
+        <script type="text/javascript">var _START_TIME = +new Date;</script>
         {% title %}{% autoescape false %}{{ title }}{% endautoescape %}{% endtitle %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <meta name="keywords" content="{% autoescape false %}{{ keywords }}{% endautoescape %}" />
@@ -18,16 +19,18 @@
         <meta name="x5-orientation" content="portrait">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="preread" content="no">
-        <link rel="icon" href="favicon.ico" />
+        <script type='text/javascript' src="./js/ga.js?__inline"></script>
         {% require $id="./layout.css" %}
         {% require $id="./js/md.js" %}
-        {% script %}{% endscript %}
+        {% require $id="./js/pagelet.js" %}
     {% endhead %}
     {% body %}
         {% pagelet $id="layout" class="layout" %}
-            {% block body %}{# 用于继承的block区域 #}{% endblock %}
+            {% block body %}{% endblock %}
         {% endpagelet %}
+        {% require $id="lib/stat" %}
         {% ATF %}
     {% endbody %}
+    {% require $id="./layout.js" %}
     <!--livereload-->
 {% endhtml %}

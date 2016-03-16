@@ -1,0 +1,25 @@
+.w-article { padding: 15px; }
+
+.w-article-title { font: bold 18px/25px Arial; color: #111; min-height: 18px; }
+
+.w-article-meta { font: normal 12px/15px Arial; margin: 5px auto; color: #aaa; }
+
+.w-article-source { margin-right: 10px; }
+
+.w-article-text { font: normal 15px/25px Arial; color: #111; }
+
+.w-article-text img, .w-article-text table { max-width: 100%; }
+
+.w-article-original { margin: 20px auto 0; font: normal 12px/25px Arial; }
+
+.w-article-original a { color: #286dea; }
+
+.w-article-notfound { padding: 50px 0; text-align: center; }
+
+.img { margin: 10px auto; }
+
+.img-l { width: 100%; }
+
+.img-m { width: 85%; }
+
+.img-title { font: normal 13px/20px Arial; }

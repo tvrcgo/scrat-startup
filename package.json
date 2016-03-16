@@ -1,15 +1,23 @@
 {
   "name": "scrat-startup",
-  "version": "1.0.0",
-  "description": "scrat startup.",
+  "version": "1.1.0",
+  "description": "web project startup.",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.14.2",
+    "compression": "^1.6.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "napi": "http://git.ucweb.local/weilai/napi-node-sdk/repository/archive",
+    "promise": "^7.1.1",
+    "request": "^2.69.0",
     "scrat-swig": "^0.5.3",
     "swig": "^1.4.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "scrat server start -L",
+    "build": "scrat release -Lwc"
   },
   "repository": {
     "type": "git",

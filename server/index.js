@@ -1,29 +1,33 @@
 var express = require('express');
 var app = module.exports = express();
-var bodyparser = require('body-parser');
-var compression = require('compression');
 var path = require('path');
 
-// server modules
-var router = require('./router');
-var engine = require('./engine');
-var render = require('./render');
+// dependencies
+var compression = require('compression'); // gzip
+
+// middlewares
+var router = require('./router'); // routers
+var engine = require('./mw/engine'); // swig engine
+var render = require('./mw/render'); // render tpl
+var combo = require('./mw/combo'); // combo
+var error = require('./mw/error'); // error handler
 
 // app config
-var root = path.join(__dirname, '..');
 app.set('port', process.env.PORT || 8800);
-app.set('root', root);
-app.use('/public', express.static(root + '/public'));
-app.use(compression()); // gzip
+app.set('root', path.join(__dirname, '..'));
+app.use(compression());
+app.use('/co', combo(app));
+app.use('/public', express.static(app.get('root') + '/public'));
 app.use(router());
 app.use(engine(app));
 app.use(['/:page/*'], render());
+app.use(error());
 
-// start
+// listen
 if (!module.parent) {
 	app.listen(app.get('port'), function(){
-		console.log('[alone] Express start at port %d', app.get('port'));
-	});
+		console.log('[alone] server start at port %d', app.get('port'));
+	})
 }
 
 // exception
@@ -37,4 +41,4 @@ process.on('uncaughtException', function (err) {
         default:
             //
     }
-});
+})

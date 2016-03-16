@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Cluster
+ * @author weilai
+ */
+
 var cluster = require('cluster'),
     os = require('os'),
     app = require('./index'),
@@ -23,6 +28,6 @@ if (cluster.isMaster) {
 }
 else {
     app.listen(app.get('port'), function(){
-        console.log('[fork] Express start at port %d', app.get('port'));
+        console.log('[fork] server start at port %d', app.get('port'));
     })
 }
